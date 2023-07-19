@@ -1,6 +1,14 @@
 import streamlit as st
 import requests
 
+# Page Config details
+st.set_page_config(
+        page_title = 'MotivationQuotes',
+        page_icon = "Ⓜ",
+        layout = "wide",
+        initial_sidebar_state = "expanded"
+    )
+
 def get_random_motivational_quote():
     url = "https://zenquotes.io/api/random"
     response = requests.get(url)
@@ -17,7 +25,7 @@ def main():
 
     if st.button("Generate Quote"):
         quote = get_random_motivational_quote()
-        st.write(f"🚀 {quote}")
+        st.write(f"🚀👉 {quote}")
 
 if __name__ == "__main__":
     main()

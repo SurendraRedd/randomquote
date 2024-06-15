@@ -20,7 +20,7 @@ def get_random_motivational_quote():
     return "Failed to fetch a quote"
 
 def main():
-    st.title("Random Motivational Quote Generator")
+    st.title("Motivational Quotes")
     st.write("Click the button below to get a dose of motivation!")
 
     if st.button("Generate Quote"):

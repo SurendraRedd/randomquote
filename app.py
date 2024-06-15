@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import random
 
 # Page Configuration details
 st.set_page_config(
@@ -25,13 +26,56 @@ def get_random_motivational_quote():
 
 # Main function to render the Streamlit app
 def main():
-    st.title("🌟 Motivational Quotes 🌟")
+    # Background color
+    page_bg_img = '''
+    <style>
+    body {
+        background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+        background-size: cover;
+    }
+    </style>
+    '''
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+    # Title with animation
+    st.markdown(
+        f"""
+        <h1 style='text-align: center; color: #ff6347; font-size: 60px;'>
+            <span class="wave">🌟</span> Motivational Quotes <span class="wave">🌟</span>
+        </h1>
+        <style>
+        @keyframes wave {{
+            0% {{ transform: rotate(0.0deg) }}
+            10% {{ transform: rotate(14deg) }}
+            20% {{ transform: rotate(-8deg) }}
+            30% {{ transform: rotate(14deg) }}
+            40% {{ transform: rotate(-4deg) }}
+            50% {{ transform: rotate(10.0deg) }}
+            60% {{ transform: rotate(0.0deg) }}
+            100% {{ transform: rotate(0.0deg) }}
+        }}
+        .wave {{
+            display: inline-block;
+            animation: wave 2s infinite;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     st.write("Need a dose of motivation? Click the button below to get inspired!")
 
     if st.button("✨ Generate Quote ✨"):
         quote = get_random_motivational_quote()
         if quote:
-            st.write(f"🚀 👉 {quote}")
+            st.markdown(
+                f"""
+                <div style='text-align: center; font-size: 30px; color: #6a5acd;'>
+                    🚀 👉 {quote}
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
         else:
             st.error("Oops! Something went wrong while fetching the quote. Please try again.")
 
@@ -46,4 +90,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
